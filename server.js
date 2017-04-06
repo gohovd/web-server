@@ -2,22 +2,12 @@ var express = require('express');
 var app = express();
 var PORT = 3000;
 
-var middleWare = {
-	requireAuthentication: function (req, res, next) {
-		console.log('private route hit!');
-		next();
-	},
-	logger: function (req, res, next) {
-
-		console.log('Request: ' + new Date().toString() + ' ' + req.method + ' ' + req.originalUrl);
-		next();
-	}
-};
+var middleWare = require('./middleware.js'); //Import function from ext. file!
 
 app.use(middleWare.logger);
 app.use(express.static(__dirname + '/public'));
 
-app.get('/', function (req, res) {
+app.get('/public/index.html', function (req, res) {
 	res.send('Hello Express!');
 });
 
