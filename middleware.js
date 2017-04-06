@@ -1,6 +1,6 @@
 var middleWare = {
 	requireAuthentication: function (req, res, next) {
-		console.log('private route hit!');
+		console.log('OBS! Private');
 		next();
 	},
 	logger: function (req, res, next) {

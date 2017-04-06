@@ -1,13 +1,13 @@
 var express = require('express');
 var app = express();
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 var middleWare = require('./middleware.js'); //Import function from ext. file!
 
 app.use(middleWare.logger);
 app.use(express.static(__dirname + '/public'));
 
-app.get('/public/index.html', function (req, res) {
+app.get('/', function (req, res) {
 	res.send('Hello Express!');
 });
 
